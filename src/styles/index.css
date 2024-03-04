@@ -10,3 +10,29 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+.counterGeneral {
+   display: flex;
+   margin: auto;
+   margin-top: 10%;
+   font-size: 600%;
+   justify-content: center;
+   background-color: rgba(255, 255, 255, 0.5);
+   width: 70%;
+   background-image: url('https://us.123rf.com/450wm/iosebi/iosebi2210/iosebi221000781/196815459-gran-conjunto-de-caras-de-reloj-vintage-textura-del-tiempo-elegante-colecci%C3%B3n-ilustraci%C3%B3n-3d.jpg?ver=6');
+   color: rgb(255, 183, 0);
+   font-weight: 500;
+   border-radius: 100px;
+   border-color: rgb(255, 183, 0);
+   border-width: 2%;
+   border-style: solid;
+   text-shadow: -1px -1px 0 #000,  
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                6px 6px 0 #000;
+}
+div {
+    display: flex;
+}
+.textCenter {
+    justify-content: center;
+}
