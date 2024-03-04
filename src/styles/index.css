@@ -36,3 +36,6 @@ div {
 .textCenter {
     justify-content: center;
 }
+button {
+    margin-top: 700px;
+}
