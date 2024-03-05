@@ -30,24 +30,5 @@ SecondsCounter.propTypes = {
   seconds: PropTypes.number,
 }
 
-let counter = 0;
-setInterval(function() {
-
-  const hours = Math.floor((counter/ 3600));
-  const minutes = Math.floor((counter % 3600) / 60);
-  const seconds = counter % 60;
-  ReactDOM.render(
-    <SecondsCounter 
-      seconds={seconds} 
-      secondsTwo={Math.floor(seconds/10)} 
-      minutes={minutes} 
-      minutesTwo={Math.floor(minutes/10)} 
-      hours={hours}
-    />,
-    document.querySelector('#app')
-  );
-  counter++;
-}, 1000);
-
 export default SecondsCounter
 
