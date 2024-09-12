@@ -16,7 +16,7 @@ Este proyecto es una aplicación de reloj en React que muestra un contador en se
 
 Asi se ve el reloj:
 
-![Imagen del contador](public/imagenCounter.png)
+![Imagen del contador](src/img/imagenCounter.png)
 
 
 
