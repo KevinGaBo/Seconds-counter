@@ -67,6 +67,5 @@ dist/*
 !.eslintrc
 .now
 
-# No ignorar el contenido de src/img
-!src/img/
-!src/img/*
+# Ignore specific image file
+src/img/imagenCounter.png
