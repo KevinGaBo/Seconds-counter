@@ -66,6 +66,3 @@ dist/*
 !.htaccess
 !.eslintrc
 .now
-
-# Ignore specific image file
-src/img/imagenCounter.png
