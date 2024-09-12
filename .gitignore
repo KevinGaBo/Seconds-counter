@@ -66,3 +66,7 @@ dist/*
 !.htaccess
 !.eslintrc
 .now
+
+# No ignorar el contenido de src/img
+!src/img/
+!src/img/*
