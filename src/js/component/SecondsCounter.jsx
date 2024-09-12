@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from 'react'
 import { FcClock } from "react-icons/fc";
 
 
 
 
 const SecondsCounter = (props) => {
-  const [seconds, setSeconds] = useState(props.seconds || 0);
+  const [seconds, setSeconds] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
 
@@ -16,33 +15,53 @@ const SecondsCounter = (props) => {
       setSeconds(prevSeconds => prevSeconds + 1);
     }, 1000);
     setIntervalId(id);
+    setIsPaused(false);
+  };
 
-  }
+  const pauseTimer = () => { 
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+      setIsPaused(true);
+    }   
+  };
+
+  const continueTimer = () => {
+    if (isPaused) {
+      startTimer();
+    }
+  };
+  
+  const stopTimer = () => {
+    clearInterval(intervalId);
+    setIntervalId(null);
+    setSeconds(0);
+    setIsPaused(false);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <div>
-    <div className='counterGeneral'>
-      <div className='calendar'><FcClock /></div>
-      <div className='hours'><p>{props.hours % 10}</p></div>
-      <div className='separator'>:</div>
-      <div className='minutesTwo'>{props.minutesTwo % 10}</div>
-      <div className='minutes'>{props.minutes % 10}</div>
-      <div className='separator'>:</div>
-      <div className='secondsTwo'>{props.secondsTwo % 10}</div>
-      <div className='seconds'>{props.seconds % 10}</div>   
-    </div>
-    <button className='continueButton'>Continue</button>
-    <button className='pauseButton'>Pause</button>
-    <button className='stopButton'>Stop</button>
+      <div className='counterGeneral'>
+        <div className='calendar'><FcClock /></div>
+        <div className='hours'><p>{Math.floor(seconds / 3600) % 10}</p></div>
+        <div className='separator'>:</div>
+        <div className='minutesTwo'>{Math.floor((seconds % 3600) / 600) % 10}</div>
+        <div className='minutes'>{Math.floor((seconds % 3600) / 60) % 10}</div>
+        <div className='separator'>:</div>
+        <div className='secondsTwo'>{Math.floor(seconds % 60 / 10)}</div>
+        <div className='seconds'>{seconds % 10}</div>
+      </div>
+      <button className='continueButton' onClick={continueTimer}>Continue</button>
+      <button className='pauseButton' onClick={pauseTimer}>Pause</button>
+      <button className='stopButton' onClick={stopTimer}>Stop</button>
+      <button className='startButton' onClick={startTimer}>Start</button>
     </div>
   );
-};
-
-SecondsCounter.propTypes = {
-  hours: PropTypes.number.isRequired,
-  minutesTwo: PropTypes.number.isRequired,
-  minutes: PropTypes.number.isRequired,
-  secondsTwo: PropTypes.number.isRequired,
-  seconds: PropTypes.number.isRequired,
 };
 
 export default SecondsCounter;
